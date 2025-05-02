@@ -1,42 +1,25 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import "tailwindcss";
+
+html {
+  background-color: #0f172a;
+  font-family: "Poppins", sans-serif;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+ul li a {
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.5s ease-in-out;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+ul li a:hover,
+ul li a:active {
+  color: #00bcd4;
+  border-bottom: 2px solid white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.GradientButton {
+  width: 130px;
+  height: 50px;
 }
