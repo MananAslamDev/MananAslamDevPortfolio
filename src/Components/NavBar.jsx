@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Button from "./Button";
 import HeaderLogo from "../assets/HeaderLogo.png";
 
@@ -8,6 +8,17 @@ const Navbar = () => {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const navigate = useNavigate();
+
+  const goToHome = () => {
+    navigate("/");
+    // Optional: scroll to top after navigation
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   // ⭐️ Lock scroll when mobile menu is open
@@ -25,11 +36,17 @@ const Navbar = () => {
 
   return (
     <header className="bg-[#0f172a] px-10 py-2.5 flex flex-row items-center justify-between text-center border-b border-white rounded-lg shadow-[0_0_10px_rgba(255,255,255,0.2)] box-border mt-[6px]">
-      <img
-        src={HeaderLogo}
-        alt="MA LOGO"
-        className="mr-[15px] w-[60px] h-auto"
-      />
+      <div
+        className="logo-container"
+        onClick={goToHome}
+        style={{ cursor: "pointer" }}
+      >
+        <img
+          src={HeaderLogo}
+          alt="Header Logo"
+          className="logo w-20 h-20 object-contain"
+        />
+      </div>
 
       {/* Desktop Navigation Menu */}
       <nav className="hidden lg:block">

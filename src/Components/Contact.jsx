@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 import HeaderLogo from "../assets/HeaderLogo.png";
 import { useForm, ValidationError } from "@formspree/react";
 import {
+  Github,
   Facebook,
   Twitter,
   Linkedin,
@@ -16,118 +18,106 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Link = ({ href, className, children }) => {
-  return (
-    <a
-      href={href}
-      className={className}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {children}
-    </a>
-  );
-};
+const Input = ({ type = "text", placeholder, className, ...props }) => (
+  <input
+    type={type}
+    placeholder={placeholder}
+    className={`w-full px-4 py-2 rounded-md border outline-none transition duration-200 ${className}`}
+    {...props}
+  />
+);
 
-const Input = ({ type, placeholder, className, ...props }) => {
-  return (
-    <input
-      type={type || "text"}
-      placeholder={placeholder}
-      className={`w-full px-4 py-2 rounded-md border outline-none transition duration-200 ${className}`}
-      {...props}
-    />
-  );
-};
+const Textarea = ({ placeholder, className, ...props }) => (
+  <textarea
+    placeholder={placeholder}
+    className={`w-full px-4 py-2 rounded-md border outline-none transition duration-200 ${className}`}
+    {...props}
+  />
+);
 
-const Textarea = ({ placeholder, className, ...props }) => {
-  return (
-    <textarea
-      placeholder={placeholder}
-      className={`w-full px-4 py-2 rounded-md border outline-none transition duration-200 ${className}`}
-      {...props}
-    />
-  );
-};
-
-const SuccessMessage = () => {
-  return (
+const SuccessMessage = () => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    className="bg-white p-8 rounded-lg shadow-lg text-center"
+  >
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="bg-white p-8 rounded-lg shadow-lg text-center"
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+      className="mx-auto mb-6 bg-green-100 w-20 h-20 rounded-full flex items-center justify-center"
     >
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-        className="mx-auto mb-6 bg-green-100 w-20 h-20 rounded-full flex items-center justify-center"
-      >
-        <CheckCircle className="text-green-600 w-10 h-10" />
-      </motion.div>
-
-      <motion.h3
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4 }}
-        className="text-2xl font-bold text-gray-800 mb-2"
-      >
-        Message Sent!
-      </motion.h3>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
-        className="text-gray-600 mb-6"
-      >
-        Thank you for reaching out. I'll get back to you as soon as possible.
-      </motion.p>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
-      >
-        <button
-          onClick={() => window.location.reload()}
-          className="inline-flex items-center bg-[#3b82f6] hover:bg-[#2563eb] text-white px-4 py-2 rounded transition-colors duration-300"
-        >
-          Send another message <ArrowRight className="ml-2 w-4 h-4" />
-        </button>
-      </motion.div>
+      <CheckCircle className="text-green-600 w-10 h-10" />
     </motion.div>
-  );
-};
+
+    <motion.h3
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.4 }}
+      className="text-2xl font-bold text-gray-800 mb-2"
+    >
+      Message Sent!
+    </motion.h3>
+
+    <motion.p
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.6 }}
+      className="text-gray-600 mb-6"
+    >
+      Thank you for reaching out. I'll get back to you as soon as possible.
+    </motion.p>
+
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.8 }}
+    >
+      <button
+        onClick={() => window.location.reload()}
+        className="inline-flex items-center bg-[#3b82f6] hover:bg-[#2563eb] text-white px-4 py-2 rounded transition-colors duration-300"
+      >
+        Send another message <ArrowRight className="ml-2 w-4 h-4" />
+      </button>
+    </motion.div>
+  </motion.div>
+);
 
 const icons = [
+  {
+    name: "Github",
+    Icon: Github,
+    hoverBg: "#000000",
+    hoverColor: "#FFFFFF",
+    url: "https://github.com/MananAslamDev",
+  },
   {
     name: "facebook",
     Icon: Facebook,
     hoverBg: "#1877F2",
     hoverColor: "#FFFFFF",
-    url: "#",
+    url: "https://www.facebook.com/mananaslamdev",
   },
   {
     name: "twitter",
     Icon: Twitter,
     hoverBg: "#000000",
     hoverColor: "#FFFFFF",
-    url: "#",
+    url: "https://x.com/hellanotmanan",
   },
   {
     name: "linkedin",
     Icon: Linkedin,
     hoverBg: "#0A66C2",
     hoverColor: "#FFFFFF",
-    url: "#",
+    url: "https://www.linkedin.com/in/mananaslamdev/",
   },
   {
     name: "instagram",
     Icon: Instagram,
     hoverBg: "#5851DB",
     hoverColor: "#FFFFFF",
-    url: "#",
+    url: "https://www.instagram.com/mananaslamdev/",
   },
 ];
 
@@ -135,16 +125,19 @@ const Contact = () => {
   const year = new Date().getFullYear();
   const [state, handleSubmit] = useForm("xldbgydq");
   const [hoveredIcon, setHoveredIcon] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Scroll to top of form when succeeded
     if (state.succeeded) {
       const element = document.getElementById("contact");
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      element?.scrollIntoView({ behavior: "smooth" });
     }
   }, [state.succeeded]);
+
+  const goToHome = () => {
+    navigate("/");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div id="contact">
@@ -166,21 +159,41 @@ const Contact = () => {
                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                   <Phone className="w-5 h-5 text-[#3b82f6]" />
                 </div>
-                <span>+92 323 4594767</span>
+                <a
+                  href="tel:+923234594767"
+                  className="hover:text-[#3b82f6] transition-colors duration-200"
+                  aria-label="Call +92 323 4594767"
+                >
+                  +92 323 4594767
+                </a>
               </div>
 
               <div className="flex items-center space-x-4">
                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                   <Mail className="w-5 h-5 text-[#3b82f6]" />
                 </div>
-                <span>mananaslamdev@gmail.com</span>
+                <a
+                  href="mailto:mananaslamdev@gmail.com"
+                  className="hover:text-[#3b82f6] transition-colors duration-200"
+                  aria-label="Email mananaslamdev@gmail.com"
+                >
+                  mananaslamdev@gmail.com
+                </a>
               </div>
 
               <div className="flex items-center space-x-4">
                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                   <MapPin className="w-5 h-5 text-[#3b82f6]" />
                 </div>
-                <span>Lahore, Pakistan.</span>
+                <a
+                  href="https://www.google.com/maps/place/Lahore,+Pakistan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#3b82f6] transition-colors duration-200"
+                  aria-label="View Lahore, Pakistan on Google Maps"
+                >
+                  Lahore, Pakistan
+                </a>
               </div>
             </div>
           </div>
@@ -230,8 +243,8 @@ const Contact = () => {
                   />
 
                   <Button
-                    type="submit"
                     text={"Send"}
+                    type="submit"
                     disabled={state.submitting}
                     className="w-full bg-[#3b82f6] hover:bg-[#2563eb] text-white flex items-center justify-center"
                   >
@@ -250,12 +263,12 @@ const Contact = () => {
                             r="10"
                             stroke="currentColor"
                             strokeWidth="4"
-                          ></circle>
+                          />
                           <path
                             className="opacity-75"
                             fill="currentColor"
                             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
+                          />
                         </svg>
                         Sending...
                       </span>
@@ -274,11 +287,17 @@ const Contact = () => {
       <footer className="container mx-auto py-6 border-t border-gray-800">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="flex items-center mb-4 md:mb-0">
-            <img
-              src={HeaderLogo}
-              alt="MA LOGO"
-              className="mr-[15px] w-[60px] h-auto"
-            />
+            <div
+              className="logo-container"
+              onClick={goToHome}
+              style={{ cursor: "pointer" }}
+            >
+              <img
+                src={HeaderLogo}
+                alt="Header Logo"
+                className="logo w-20 h-20 object-contain"
+              />
+            </div>
             <span className="ml-2 text-sm text-gray-400">
               © {year} Portfolio. All rights reserved.
             </span>
@@ -289,6 +308,8 @@ const Contact = () => {
               <a
                 key={item.name}
                 href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out bg-white shadow-sm hover:shadow-md"
                 style={{
                   background:

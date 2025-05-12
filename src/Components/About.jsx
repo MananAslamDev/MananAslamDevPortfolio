@@ -48,7 +48,14 @@ const About = () => {
               }
             }}
           />
-          <Button text="Resume" variant="outline" />
+          <a
+            href="/MananAslamReactDevResume.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button text="Resume" variant="outline" />
+          </a>
         </div>
       </div>
     </motion.div>
