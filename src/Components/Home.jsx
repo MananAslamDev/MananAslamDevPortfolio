@@ -15,9 +15,9 @@ const Home = () => {
       ref={scrollRef}
       className="relative overflow-hidden min-h-screen flex items-center"
     >
-      <h3 className="font-poppins absolute text-[14.5vw] font-black text-[#00bcd4] opacity-10 top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-[25deg] pointer-events-none select-none z-[1] uppercase">
+      <h1 className="font-poppins absolute text-[14.5vw] font-black text-[#00bcd4] opacity-10 top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-[25deg] pointer-events-none select-none z-[1] uppercase">
         Developer
-      </h3>
+      </h1>
 
       {/* Content layout */}
       <div className="flex flex-col-reverse md:flex-row justify-between items-center w-full max-w-6xl mx-auto px-6 md:px-12 py-16 relative z-[2]">

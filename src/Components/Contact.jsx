@@ -142,7 +142,7 @@ const Contact = () => {
   return (
     <div id="contact">
       <div className="bg-gradient-to-b from-[#0f172a] to-[#0a0f5c] rounded-3xl p-8 md:p-12">
-        <h2 className="text-2xl text-[#ffffff] font-bold mb-8">CONTACT</h2>
+        <h1 className="text-2xl text-[#ffffff] font-bold mb-8">CONTACT</h1>
 
         <div className="grid md:grid-cols-2 gap-8">
           <div>

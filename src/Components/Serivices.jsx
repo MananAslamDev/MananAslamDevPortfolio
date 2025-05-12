@@ -78,9 +78,9 @@ const Services = ({isFullDisplay = false}) => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Our <span className="text-[#00bcd4]">Services</span>
-          </h2>
+          </h1>
           <div className="w-24 h-1 bg-[#00bcd4] mx-auto mb-6"></div>
           <p className="text-gray-300 max-w-2xl mx-auto">
             We deliver high-quality digital solutions crafted to meet your specific needs and exceed expectations.

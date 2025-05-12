@@ -25,7 +25,7 @@ const About = () => {
         />
       </div>
       <div className="bg-[#111827] p-8 rounded-lg">
-        <h2 className="text-2xl font-bold mb-6 text-white">ABOUT ME</h2>
+        <h1 className="text-2xl font-bold mb-6 text-white">ABOUT ME</h1>
         <p className="text-gray-300 mb-6 max-w-[500px]">
           I'm Manan Aslam, a frontend developer passionate about creating clean,
           responsive, and engaging web experiences. I specialize in React,

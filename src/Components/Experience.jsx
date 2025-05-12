@@ -229,9 +229,9 @@ const Experience = ({ isFullDisplay = false }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
             <span className="text-[#00bcd4]">Tech</span> Experience
-          </h2>
+          </h1>
           {isFullDisplay && (
             <p className="text-gray-300 max-w-2xl mx-auto mt-4">
               A comprehensive overview of my technical skills and experience across various technologies and frameworks.
