@@ -87,35 +87,35 @@ const icons = [
   {
     name: "Github",
     Icon: Github,
-    hoverBg: "#000000",
+    hoverBg: "#0f172a",
     hoverColor: "#FFFFFF",
     url: "https://github.com/MananAslamDev",
   },
   {
     name: "facebook",
     Icon: Facebook,
-    hoverBg: "#1877F2",
+    hoverBg: "#0f172a",
     hoverColor: "#FFFFFF",
     url: "https://www.facebook.com/mananaslamdev",
   },
   {
     name: "twitter",
     Icon: Twitter,
-    hoverBg: "#000000",
+    hoverBg: "#0f172a",
     hoverColor: "#FFFFFF",
     url: "https://x.com/hellanotmanan",
   },
   {
     name: "linkedin",
     Icon: Linkedin,
-    hoverBg: "#0A66C2",
+    hoverBg: "#0f172a",
     hoverColor: "#FFFFFF",
     url: "https://www.linkedin.com/in/mananaslamdev/",
   },
   {
     name: "instagram",
     Icon: Instagram,
-    hoverBg: "#5851DB",
+    hoverBg: "#0f172a",
     hoverColor: "#FFFFFF",
     url: "https://www.instagram.com/mananaslamdev/",
   },
@@ -310,10 +310,10 @@ const Contact = () => {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out bg-white shadow-sm hover:shadow-md"
+                className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out bg-[#0f172a] shadow-sm hover:shadow-md"
                 style={{
                   background:
-                    hoveredIcon === item.name ? item.hoverBg : "#FFFFFF",
+                    hoveredIcon === item.name ? item.hoverBg : "#0f172a",
                 }}
                 onMouseEnter={() => setHoveredIcon(item.name)}
                 onMouseLeave={() => setHoveredIcon(null)}
@@ -323,7 +323,7 @@ const Contact = () => {
                   className="w-5 h-5 transition-colors duration-300"
                   style={{
                     color:
-                      hoveredIcon === item.name ? item.hoverColor : "#333333",
+                      hoveredIcon === item.name ? item.hoverColor : "#FFFFFF",
                   }}
                 />
               </a>

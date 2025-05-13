@@ -23,3 +23,8 @@ ul li a:active {
   width: 130px;
   height: 50px;
 }
+
+.instagram-gradient:hover {
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  color: #ffffff;
+}
