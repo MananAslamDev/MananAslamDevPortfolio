@@ -23,16 +23,16 @@ const Home = () => {
       <div className="flex flex-col-reverse md:flex-row justify-between items-center w-full max-w-6xl mx-auto px-6 md:px-12 py-16 relative z-[2]">
         {/* Left Text Section */}
         <div className="text-center md:text-left max-w-xl">
-          <h2 className="text-xl text-[#a3a3a3] font-josefin mb-2">I'm a</h2>
+          <h2 className="text-xl text-[#a3a3a3] font-josefin mb-2">Hi, I'm </h2>
           <motion.h1
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight font-josefin mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            FRONT END <br />
-            REACT <br />
-            DEVELOPER<span className="text-[#39bdf8]">.</span>
+            Manan Aslam <br />
+            A FrontEnd <br />
+            React Dev<span className="text-[#39bdf8]">.</span>
           </motion.h1>
           <Button
             text="My Recent Projects"
