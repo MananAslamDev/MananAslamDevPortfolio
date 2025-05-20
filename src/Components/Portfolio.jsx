@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import Zayrah from "../assets/Zayrah.png";
 import LLEI from "../assets/LLEI.png";
 import DashBoard from "../assets/DashBoard.png";
 import WeatherApp from "../assets/WeatherApp.png";
 import PortfolioSS from "../assets/PortfolioSS.png";
 
 const Portfolio = ({ isFullDisplay = false }) => {
-  const [activeTab, setActiveTab] = useState("DashBoard");
+  const [activeTab, setActiveTab] = useState("Zayrah");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,11 +17,23 @@ const Portfolio = ({ isFullDisplay = false }) => {
   }, []);
 
   const projects = {
-    DashBoard: [
+    Zayrah: [
       {
         id: 1,
-        title: "DashBoard",
+        title: "Zayrah",
         category: "PROJECT 1",
+        description:
+          "Zayrah is a modern e-commerce platform built with React, offering a seamless and intuitive shopping experience. It features a dynamic product catalog, user-friendly navigation, and a responsive design to ensure accessibility across various devices.",
+        image: Zayrah,
+        color: "bg-red-200",
+        url: "https://zayrahbymanan.vercel.app/",
+      },
+    ],
+    DashBoard: [
+      {
+        id: 2,
+        title: "DashBoard",
+        category: "PROJECT 2",
         description:
           "A modern, responsive dashboard interface designed to streamline business operations and provide real-time insights. The dashboard features intuitive navigation, dynamic data management, and interactive components tailored for efficient monitoring and control of various business activities.",
         image: DashBoard,
@@ -28,18 +41,7 @@ const Portfolio = ({ isFullDisplay = false }) => {
         url: "https://reactdashboardbymanan.vercel.app/",
       },
     ],
-    BusinessWebsite: [
-      {
-        id: 2,
-        title: "Lucky Label Embroidery Industry Website",
-        category: "PROJECT 2",
-        description:
-          "I designed and developed a responsive corporate website for Lucky Label Embroidery Industry, a company specializing in woven labels, printed tags, patches, and embroidery solutions. It reflects the brand's identity while serving as a point of contact for B2B clients.",
-        image: LLEI,
-        color: "bg-blue-300",
-        url: "https://luckylabelembroideryindustry.vercel.app/",
-      },
-    ],
+    
     WeatherApp: [
       {
         id: 3,
@@ -62,6 +64,19 @@ const Portfolio = ({ isFullDisplay = false }) => {
         image: PortfolioSS,
         color: "bg-purple-300",
         url: "https://mananaslamdev.vercel.app/",
+      },
+    ],
+    
+    BusinessWebsite: [
+      {
+        id: 5,
+        title: "Lucky Label Embroidery Industry Website",
+        category: "PROJECT 5",
+        description:
+          "I designed and developed a responsive corporate website for Lucky Label Embroidery Industry, a company specializing in woven labels, printed tags, patches, and embroidery solutions. It reflects the brand's identity while serving as a point of contact for B2B clients.",
+        image: LLEI,
+        color: "bg-blue-300",
+        url: "https://luckylabelembroideryindustry.vercel.app/",
       },
     ],
   };
