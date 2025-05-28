@@ -33,21 +33,21 @@ const Experience = ({ isFullDisplay = false }) => {
       name: "Tailwind CSS", 
       image: TailwindCssLogo,
       description: "Proficient in using Tailwind CSS to build responsive and modern UI components efficiently. Utilized utility-first approach for rapid and consistent styling.",
-      level: "Advanced",
+      level: "Expert",
       yearsOfExperience: 1
     },
     { 
       name: "React JS", 
       image: ReactLogo,
       description: "Extensive experience building modern web applications with React. Proficient with hooks, context API, Redux, and various React libraries.",
-      level: "Advanced",
+      level: "Expert",
       yearsOfExperience: 1
     },
     { 
       name: "JavaScript", 
       image: JavaScriptLogo,
       description: "Deep understanding of JavaScript including ES6+ features, asynchronous programming, DOM manipulation, and modern JS frameworks.",
-      level: "Advanced",
+      level: "Expert",
       yearsOfExperience: 2
     },
     { 
